@@ -1,0 +1,31 @@
+nasm -f elf64 add.asm -o add.o
+gcc -no-pie main.c add.o -o add_program
+./add_program
+
+
+nasm -f elf32 add.asm -o add.o
+gcc -m32 main.c add.o -o add_program
+./add_program
+
+
+If your .asm file (like add.o) uses absolute addressing or doesn’t use the 
+call/pop trick for PIC... Then linking it into a PIE will cause problems
+gcc -m32 -no-pie main.c add.o -o add_program
+
+
+for 32 bit install the headers
+sudo apt update
+sudo apt install gcc-multilib g++-multilib libc6-dev-i386
+
+
+nasm installation
+sudo apt update
+sudo apt install nasm
+
+gcc installation
+sudo apt update
+sudo apt install build-essential
+
+
+nasm -f elf64 test.asm -o test.o
+ld test.o -o test
