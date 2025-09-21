@@ -1,0 +1,2 @@
+First printf into out.txt
+strerror says: No such file or directory
